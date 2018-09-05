@@ -21,6 +21,6 @@ cd /zookeeper-3.4.13/bin
 zkCli.sh
 
 4, Run following command to start application
- java -jar ${code_dir}/target/zookeeper-lock-0.0.1-SNAPSHOT.jar
+ java -jar ${code_dir}/zookeeper-conf/zookeeper-lock-0.0.1-SNAPSHOT.jar
 5, Access this url and check the backend log information
  http://localhost:8080/testlock
