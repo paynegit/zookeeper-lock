@@ -1,11 +1,16 @@
 spring:
+  profiles:
+    active:
+    - dev
+---
+spring:
   cache:
     redis:
       time-to-live: 2000s
       cache-null-values: false
-  profiles: dev
+  profiles: dev    
   application:
-    name: inventory-service-config
+    name: price-service
   datasource:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
@@ -25,7 +30,7 @@ spring:
         max-wait: -1ms
     timeout: 500s
 server:
-  port: 8082
+  port: 8081
 debug: true
 logging:
   level:
@@ -38,19 +43,19 @@ logging:
                 InventoryController: debug
   config: classpath:logback-spring.xml
 
-management.server.port: 8084
+management.server.port: 8086
 
 eureka:
-  client: #客户端注册进eureka服务列表内
+  client:
     service-url:
       #defaultZone: http://localhost:7001
        defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
   instance:
-    instance-id: inventory-service-8082
-    prefer-ip-address: true     #访问路径可以显示IP地址
+    instance-id: price-service-8081
+    prefer-ip-address: true
 
 info:
-  app.name: inventory-service
+  app.name: price-service
   company.name: www.aaxiscommerce.com
   build.artifactId: @project.artifactId@
   build.version: @project.version@
