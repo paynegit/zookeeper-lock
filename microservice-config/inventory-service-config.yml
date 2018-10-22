@@ -1,14 +1,10 @@
-spring:
-  profiles:
-    active:
-    - dev 
 ---
 spring:
   cache:
     redis:
       time-to-live: 2000s
       cache-null-values: false
-  profiles: dev    
+  profiles: dev
   application:
     name: inventory-service
   datasource:
