@@ -61,4 +61,4 @@ info:
 #  build.version: @project.version@
 
 status:
-  property: running
+  property: changed
