@@ -43,7 +43,7 @@ logging:
                 InventoryController: debug
   config: classpath:logback-spring.xml
 
-management.server.port: 8084
+#management.server.port: 8084
 
 eureka:
   client:
