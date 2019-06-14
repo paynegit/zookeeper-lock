@@ -1,0 +1,61 @@
+spring:
+  profiles:
+    active:
+    - test
+---
+spring:
+  cache:
+    redis:
+      time-to-live: 2000s
+      cache-null-values: false
+  profiles: test    
+  application:
+    name: price-service
+  datasource:
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test
+    username: root
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  redis:
+    jedis:
+      pool:
+        max-idle: 20
+        min-idle: 10
+        max-active: 20
+        max-wait: -1ms
+    timeout: 500s
+server:
+  port: 8087
+debug: true
+logging:
+  level:
+    com:
+      aaxis:
+        microservice:
+          training:
+            demo1:
+              controller:
+                InventoryController: debug
+  config: classpath:logback-spring.xml
+
+management.server.port: 8088
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001
+       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: price-service-8081
+    prefer-ip-address: true
+
+info:
+  app.name: price-service
+  company.name: www.aaxiscommerce.com
+#  build.artifactId: @project.artifactId@
+#  build.version: @project.version@
